@@ -21,12 +21,12 @@ export class AppComponent {
   highlight: boolean;
   // courses = ['angular', 'react', 'vue'];
   courses = [
-    { id:1, name:'Angular' },
-    { id:2, name:'React' },
-    { id:3, name:'Vue' },
-    { id:4, name:'Ember' },
-    { id:5, name:'Knockout' },
-    { id:6, name:'Fabric' },
+    { id: 1, name: 'Angular' },
+    { id: 2, name: 'React' },
+    { id: 3, name: 'Vue' },
+    { id: 4, name: 'Ember' },
+    { id: 5, name: 'Knockout' },
+    { id: 6, name: 'Fabric' },
   ];
   viewMode = 'grid';
 
