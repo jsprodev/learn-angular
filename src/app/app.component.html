@@ -90,8 +90,8 @@
   <div>
     <p>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</p>
     <ul>
-      <li *ngFor="let course of courses">
-        {{ course }}
+      <li *ngFor="let course of courses; index as i; odd as isOdd; even as isEven; first as isFirst;">
+        {{ i }}: {{ course.name }} -  <span *ngIf="isOdd">Odd</span> <span *ngIf="isEven">Even</span> - <span *ngIf="isFirst">First Course</span>
       </li>
     </ul>
   </div>
