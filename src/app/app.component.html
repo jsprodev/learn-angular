@@ -1,0 +1,116 @@
+<h3>string interpolation: {{ title }}</h3> <!-- string interpolation, behind the scenes string interpolation is converted to property binding  --> 
+<br>
+<h3 [textContent]="title"></h3> <!-- property binding, Works on properties on DOM objects  -->
+<br>
+
+<h3>Person Details (Applying builtin angular PIPES)</h3>
+<p>
+  {{ person.name | uppercase }} <br>
+  {{ person.age }}  <br>
+  {{ person.height | number:'1.2-2' }}  <br>
+  {{ person.salary | currency:'AUD':'symbol' }}  <br>
+  {{ person.dated | date }}  <br>
+</p>
+<br>
+
+<h3>Applying custom pipe on the following text to limit the characters</h3>
+<p> {{ text | summary:100 }}</p>
+<br>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-inverse">
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td [attr.colspan]="colspanNo">attribute binding on colspan attribute</td> <!-- attribute binding, Works on attributes of HTML elements  -->
+      <td>b</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<button class="btn btn-primary" [class.bg-red]="isActive">Class Binding: If isActive is 'true', apply class of '.bg-red' to this button.</button> <!-- class binding -->
+<br><br>
+
+<h1 [style.color]="isActive ? 'green' : 'blue'">Style Binding</h1> <!-- style binding -->
+<br>
+
+<div (click)="clickDiv()">
+  <button class="btn btn-default" (click)="clickButton($event)">This is event binding</button>
+</div>
+<br><br>
+
+<div>
+  <input #inputTV class="width-500" (keyup.enter)="keyEvent(inputTV.value)" placeholder="this is event filtering, enter is filtered event, see console">
+</div>
+<br>
+
+<div>
+  <input class="width-500" [(ngModel)]="email" placeholder="two way data binding, ngModel">
+  <span> {{ email }} </span>
+</div>
+<br><br>
+
+<app-favorite [is-favorite]="highlight" (custom-event)="changeFavorite($event)">
+</app-favorite>
+<br>
+<!-- <app-favorite [is-favorite]="highlight" (custom-event)="changeFavorite($event)">
+  <div>
+    <p [style.background-color]="highlight ? 'yellow' :  'grey'"  (click)="changeFavorite($event)"> Hello World</p>
+  </div>
+</app-favorite> -->
+
+<bootstrap-card>
+  <ng-container class="ngc-header">Reusable Component without input and output properties</ng-container>
+  <ng-container class="ngc-body">This component uses ng-container and ng-content</ng-container>
+  <ng-container class="ngc-footer">Powered by Angular</ng-container>
+</bootstrap-card> 
+<br><br>
+
+<div [hidden]="courses.length == 0">
+  Courses are available (Using hidden property binding, con: both divs are rendered in the DOM)
+</div>
+<div [hidden]="courses.length > 0">
+  Courses are not available (Using hidden property binding, con: both divs are rendered in the DOM)
+</div>
+<br>
+
+<div *ngIf="courses.length>0;"> 
+  <p>Course are available (Simple ngIf )</p>
+</div>
+<br>
+
+<div *ngIf="courses.length > 0; then coursesThenTV else noCoursesElseTV"></div>
+<ng-template #coursesThenTV>
+  <div>
+    <p>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</p>
+    <ul>
+      <li *ngFor="let course of courses">
+        {{ course }}
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<ng-template #noCoursesElseTV>
+  No courses 
+</ng-template>
+<br><br>
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="viewMode == 'list'" (click)="viewMode = 'list'">List</a> <!-- we can bind it to a function but the logic is so small thats why --> 
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="viewMode == 'grid'" (click)="viewMode = 'grid'">Grid</a>
+  </li>
+</ul>
+<div [ngSwitch]="viewMode" class="mt-1"> <!-- Bind the property(variable) with ngSwitch directive first then use ngSwitchCase directive -->
+  <div *ngSwitchCase="'list'">This is List View</div> 
+  <div *ngSwitchCase="'grid'">This is Grid View</div>
+  <div *ngSwitchDefault>Default: No View Mode </div>
+</div>

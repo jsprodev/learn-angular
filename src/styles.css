@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import"~bootstrap/dist/css/bootstrap.css";
+
+html {
+    font-size: 16px;
+}
+
+body {
+    padding: 30px;
+}
+
+.width-500 {
+    width: 500px;
+}
+
+.star {
+    background-color: yellow;
+}
+
+.star-empty {
+    background-color: black;
+}
+
+.mt-1 {
+    margin-top: 1rem !important; 
+}
