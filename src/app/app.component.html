@@ -91,11 +91,13 @@
     <h3>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</h3>
     <ul>
       <li *ngFor="let course of courses; index as i; odd as isOdd; even as isEven; first as isFirst; last as isLast;"> <!-- use trackBy if you want to render the courses on courses.id (not on memory allocation). -->
-        {{ i }}: {{ course.name }} - {{ course.id }} -  
-        <span *ngIf="isOdd">Odd Index</span>
-        <span *ngIf="isEven">Even Index</span>  
-        <span *ngIf="isFirst">(First Course)</span>
-        <span *ngIf="isLast">(Last Course)</span>
+        <span class="badge badge-secondary">Index: {{ i }}</span>
+        <span class="badge badge-primary" *ngIf="isOdd">Odd Index</span>
+        <span class="badge badge-success" *ngIf="isEven">Even Index</span> 
+        <span class="badge badge-dark">Course Name: {{ course.name }}</span>
+        <span class="badge badge-info">Course id: {{ course.id }}</span> 
+        <span class="badge badge-warning" *ngIf="isFirst">First Course</span>
+        <span class="badge badge-warning" *ngIf="isLast">Last Course</span>
         <button class="btn btn-sm btn-danger" (click)="removeCourse(course)">Remove</button>
       </li>
     </ul>

@@ -67,7 +67,7 @@ export class AppComponent {
   addCourse() {
     // let length = this.courses.length;
     let length  = 0;
-    this.courses.forEach( (element, index) => {
+    this.courses.forEach( (element) => {
       // console.log(element);
       length = element.id;
     });
