@@ -57,4 +57,26 @@ export class AppComponent {
     console.log('Message from Host Component, favorite changed :', eventP);
   }
 
+  // remove course method
+  removeCourse(courseP) {
+    let index = this.courses.indexOf(courseP);
+    this.courses.splice(index, 1);
+  }
+
+  // add new course 
+  addCourse() {
+    // let length = this.courses.length;
+    let length  = 0;
+    this.courses.forEach( (element, index) => {
+      // console.log(element);
+      length = element.id;
+    });
+    this.courses.push({ id: (length+1), name: 'New Course' });
+  }
+
+  // trackBy logic for ngFor
+  // trackCourse(index, course) {
+  //   return course ? course.id : undefined;
+  // }
+
 }

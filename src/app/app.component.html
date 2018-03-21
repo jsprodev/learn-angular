@@ -88,12 +88,18 @@
 <div *ngIf="courses.length > 0; then coursesThenTV else noCoursesElseTV"></div>
 <ng-template #coursesThenTV>
   <div>
-    <p>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</p>
+    <h3>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</h3>
     <ul>
-      <li *ngFor="let course of courses; index as i; odd as isOdd; even as isEven; first as isFirst;">
-        {{ i }}: {{ course.name }} -  <span *ngIf="isOdd">Odd</span> <span *ngIf="isEven">Even</span> - <span *ngIf="isFirst">First Course</span>
+      <li *ngFor="let course of courses; index as i; odd as isOdd; even as isEven; first as isFirst; last as isLast;"> <!-- use trackBy if you want to render the courses on courses.id (not on memory allocation). -->
+        {{ i }}: {{ course.name }} - {{ course.id }} -  
+        <span *ngIf="isOdd">Odd Index</span>
+        <span *ngIf="isEven">Even Index</span>  
+        <span *ngIf="isFirst">(First Course)</span>
+        <span *ngIf="isLast">(Last Course)</span>
+        <button class="btn btn-sm btn-danger" (click)="removeCourse(course)">Remove</button>
       </li>
     </ul>
+    <button class="btn btn-sm btn-primary" (click)="addCourse()">Add new course</button>
   </div>
 </ng-template>
 <ng-template #noCoursesElseTV>
@@ -112,5 +118,5 @@
 <div [ngSwitch]="viewMode" class="mt-1"> <!-- Bind the property(variable) with ngSwitch directive first then use ngSwitchCase directive -->
   <div *ngSwitchCase="'list'">This is List View</div> 
   <div *ngSwitchCase="'grid'">This is Grid View</div>
-  <div *ngSwitchDefault>Default: No View Mode </div>
+  <div *ngSwitchDefault>Default: No View Mode</div>
 </div>
