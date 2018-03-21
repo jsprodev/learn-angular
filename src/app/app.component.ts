@@ -59,11 +59,11 @@ export class AppComponent {
 
   // remove course method
   removeCourse(courseP) {
-    let index = this.courses.indexOf(courseP);
+    const index = this.courses.indexOf(courseP);
     this.courses.splice(index, 1);
   }
 
-  // add new course 
+  // add new course
   addCourse() {
     // let length = this.courses.length;
     let length  = 0;
@@ -71,7 +71,7 @@ export class AppComponent {
       // console.log(element);
       length = element.id;
     });
-    this.courses.push({ id: (length+1), name: 'New Course' });
+    this.courses.push({ id: (length + 1), name: 'New Course' });
   }
 
   // trackBy logic for ngFor
