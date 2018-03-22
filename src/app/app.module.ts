@@ -7,13 +7,15 @@ import { DataService } from './data.service';
 import { SummaryPipe } from './summary.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { BootstrapCardComponent } from './bootstrap-card/bootstrap-card.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SummaryPipe,
     FavoriteComponent,
-    BootstrapCardComponent
+    BootstrapCardComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,

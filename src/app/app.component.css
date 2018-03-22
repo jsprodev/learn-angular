@@ -9,3 +9,11 @@ li.nav-item {
 ul li {
     padding: 0.5rem 0rem;
 }
+
+.bg-yellow {
+    background: yellow;
+}
+
+.bg-grey {
+    background: grey;
+}

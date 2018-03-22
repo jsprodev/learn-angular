@@ -18,8 +18,9 @@ export class AppComponent {
   tasks = [];
   person = {};
   text = '';
+  viewMode = 'grid';
   highlight: boolean;
-  // courses = ['angular', 'react', 'vue'];
+  hbkStyle: boolean = true;
   courses = [
     { id: 1, name: 'Angular' },
     { id: 2, name: 'React' },
@@ -28,7 +29,14 @@ export class AppComponent {
     { id: 5, name: 'Knockout' },
     { id: 6, name: 'Fabric' },
   ];
-  viewMode = 'grid';
+  complexObject = {
+      title: 'Candidate Details',
+      personalDetails: {
+        name: 'John Doe',
+        designation: 'Front-end Developer',
+        address: null
+      }
+    };
 
   constructor(myService: DataService) {
     this.tasks = myService.getTasks();
@@ -63,7 +71,7 @@ export class AppComponent {
     this.courses.splice(index, 1);
   }
 
-  // add new course 
+  // add new course   
   addCourse() {
     // let length = this.courses.length;
     let length  = 0;
@@ -78,5 +86,9 @@ export class AppComponent {
   // trackCourse(index, course) {
   //   return course ? course.id : undefined;
   // }
+
+  toggleHighlight() {
+    this.highlight = ! this.highlight;
+  }
 
 }

@@ -86,6 +86,7 @@
 <br>
 
 <div *ngIf="courses.length > 0; then coursesThenTV else noCoursesElseTV"></div>
+<!-- the leading * in structural directives means angular is going to use  <ng-template> with the [ngIif], [ngFor], [ngSwitchCase] directive for all conditions -->
 <ng-template #coursesThenTV>
   <div>
     <h3>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</h3>
@@ -121,4 +122,33 @@
   <div *ngSwitchCase="'list'">This is List View</div> 
   <div *ngSwitchCase="'grid'">This is Grid View</div>
   <div *ngSwitchDefault>Default: No View Mode</div>
+</div>
+<br>
+
+<div>
+  <p [ngClass]="{ 'bg-yellow': highlight, 'bg-grey': !highlight }" (click)="toggleHighlight()">
+    [ngClass] is an attribute directive, if the condition is true, the text will be highlighted to yellow
+  </p>
+</div>
+<br>
+
+<div>
+  <p [ngStyle]="{ 'backgroundColor': hbkStyle? '#eee': '', 'color': hbkStyle? 'blue': ''}">
+    [ngStyle] is an attribute binding
+  </p>
+</div>
+<br>
+
+<div>
+  <p>Safe travversal operator (?) is used with complex ojects. If we dont have access to a particular property of obkect or its is undefined then we use safe traversal operator</p>
+  <span>{{ complexObject.personalDetails.name }}</span>
+  <span>{{ complexObject.personalDetails?.designation }}</span>
+  <span>{{ complexObject.personalDetails?.address }}</span>
+</div>
+<br>
+
+<div>
+  <p>This is a custom directive. This directive formats the input to uppercase or lowercase baed on input property </p>
+  <!-- <input type="text" inputFormat [format]="'lowercase'" placeholder="type here"> -->
+  <input type="text" [inputFormat]="'lowercase'" placeholder="type here">
 </div>
