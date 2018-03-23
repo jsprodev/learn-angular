@@ -163,7 +163,7 @@
     </div>
     <div class="form-group">
       <label for="comment">Comment</label>
-      <textarea class="form-control" id="comment" name="" cols="20" rows="5" ></textarea>
+      <textarea class="form-control" id="comment" name="" cols="20" rows="5" name="comment" ngModel #commentTV="ngModel" (change)="onChange(commentTV)"></textarea>
     </div>
     <button class="btn btn-primary">Submit</button>
   </form>
