@@ -1,9 +1,9 @@
-<h3>string interpolation: {{ title }}</h3> <!-- string interpolation, behind the scenes string interpolation is converted to property binding  --> 
+<h5>string interpolation: {{ title }}</h5> <!-- string interpolation, behind the scenes string interpolation is converted to property binding  --> 
 <br>
-<h3 [textContent]="title"></h3> <!-- property binding, Works on properties on DOM objects  -->
+<h5 [textContent]="title"></h5> <!-- property binding, Works on properties on DOM objects  -->
 <br>
 
-<h3>Person Details (Applying builtin angular PIPES)</h3>
+<h5>Person Details (Applying builtin angular PIPES)</h5>
 <p>
   {{ person.name | uppercase }} <br>
   {{ person.age }}  <br>
@@ -13,7 +13,7 @@
 </p>
 <br>
 
-<h3>Applying custom pipe on the following text to limit the characters</h3>
+<h5>Applying custom pipe on the following text to limit the characters</h5>
 <p> {{ text | summary:100 }}</p>
 <br>
 
@@ -37,7 +37,7 @@
 <button class="btn btn-primary" [class.bg-red]="isActive">Class Binding: If isActive is 'true', apply class of '.bg-red' to this button.</button> <!-- class binding -->
 <br><br>
 
-<h1 [style.color]="isActive ? 'green' : 'blue'">Style Binding</h1> <!-- style binding -->
+<h5 [style.color]="isActive ? 'green' : 'blue'">Style Binding</h5> <!-- style binding -->
 <br>
 
 <div (click)="clickDiv()">
@@ -89,7 +89,7 @@
 <!-- the leading * in structural directives means angular is going to use  <ng-template> with the [ngIif], [ngFor], [ngSwitchCase] directive for all conditions -->
 <ng-template #coursesThenTV>
   <div>
-    <h3>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</h3>
+    <h5>ngIf with 'then' and 'else' combined with ngFor (pro: one onle div is rendered in the DOM)</h5>
     <ul>
       <li *ngFor="let course of courses; index as i; odd as isOdd; even as isEven; first as isFirst; last as isLast;"> <!-- use trackBy if you want to render the courses on courses.id (not on memory allocation). -->
         <span class="badge badge-secondary">Index: {{ i }}</span>
@@ -140,7 +140,7 @@
 <br>
 
 <div>
-  <p>Safe travversal operator (?) is used with complex ojects. If we dont have access to a particular property of obkect or its is undefined then we use safe traversal operator</p>
+  <h5>Safe travversal operator (?) is used with complex ojects. If we dont have access to a particular property of obkect or its is undefined then we use safe traversal operator</h5>
   <span>{{ complexObject.personalDetails.name }}</span>
   <span>{{ complexObject.personalDetails?.designation }}</span>
   <span>{{ complexObject.personalDetails?.address }}</span>
@@ -148,7 +148,24 @@
 <br>
 
 <div>
-  <p>This is a custom directive. This directive formats the input to uppercase or lowercase baed on input property </p>
+  <h5>This is a custom directive. This directive formats the input to uppercase or lowercase baed on input property </h5>
   <!-- <input type="text" inputFormat [format]="'lowercase'" placeholder="type here"> -->
   <input type="text" [inputFormat]="'lowercase'" placeholder="type here"> <!-- use this if the input Alias is same as directive name   -->
 </div>
+<br><br>
+
+<div>
+  <h5>Template Driven Forms</h5>
+  <form>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input class="form-control" id="firstName" type="text" name="firstName" ngModel  #firstNameTV="ngModel" (change)="onChange(firstNameTV)">
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea class="form-control" id="comment" name="" cols="20" rows="5" ></textarea>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<br><br>

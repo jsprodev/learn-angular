@@ -91,4 +91,8 @@ export class AppComponent {
     this.highlight = ! this.highlight;
   }
 
+  onChange(inputTVP) {
+    console.log(inputTVP);
+  }
+
 }
