@@ -20,7 +20,7 @@ export class AppComponent {
   text = '';
   viewMode = 'grid';
   highlight: boolean;
-  hbkStyle: boolean = true;
+  hbkStyle = true;
   courses = [
     { id: 1, name: 'Angular' },
     { id: 2, name: 'React' },
