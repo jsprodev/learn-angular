@@ -159,7 +159,19 @@
   <form>
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input class="form-control" id="firstName" type="text" name="firstName" ngModel  #firstNameTV="ngModel" (change)="onChange(firstNameTV)">
+      <input class="form-control" id="firstName" type="text" name="firstName" 
+        ngModel  
+        #firstNameTV="ngModel" 
+        (change)="onChange(firstNameTV)" 
+        required
+        minlength="3"
+        maxlength="15"
+        pattern="hashim">
+      <div class="alert alert-danger" *ngIf="firstNameTV.touched && firstNameTV.invalid">
+        <div *ngIf="firstNameTV.errors.required">First Name is requied</div>
+        <div *ngIf="firstNameTV.errors.minlength">Minimum lenght should be {{ firstNameTV.errors.minlength.requiredLength }} characters</div>
+        <div *ngIf="firstNameTV.errors.pattern">First Name dosent match the pattern "{{ firstNameTV.errors.pattern.requiredPattern }}"</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="comment">Comment</label>
