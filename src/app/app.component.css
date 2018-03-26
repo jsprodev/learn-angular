@@ -1,19 +1,7 @@
-.bg-red {
-    background-color: red !important;
-}
-
 li.nav-item {
     cursor: pointer;
 }
 
 ul li {
     padding: 0.5rem 0rem;
-}
-
-.bg-yellow {
-    background: yellow;
-}
-
-.bg-grey {
-    background: grey;
 }

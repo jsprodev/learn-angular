@@ -156,28 +156,78 @@
 
 <div>
   <h5>Template Driven Forms</h5>
-  <form>
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input class="form-control" id="firstName" type="text" name="firstName" 
-        ngModel  
-        #firstNameTV="ngModel" 
-        (change)="onChange(firstNameTV)" 
-        required
-        minlength="3"
-        maxlength="15"
-        pattern="hashim">
-      <div class="alert alert-danger" *ngIf="firstNameTV.touched && firstNameTV.invalid">
-        <div *ngIf="firstNameTV.errors.required">First Name is requied</div>
-        <div *ngIf="firstNameTV.errors.minlength">Minimum lenght should be {{ firstNameTV.errors.minlength.requiredLength }} characters</div>
-        <div *ngIf="firstNameTV.errors.pattern">First Name dosent match the pattern "{{ firstNameTV.errors.pattern.requiredPattern }}"</div>
+  <form ngForm #fTV="ngForm" (ngSubmit)="onFormSubmit(fTV)">  <!-- ngForm Directive (applied by default) -> FormGroup object is created BTS by angular  -->
+    <div ngModelGroup #formGroupTV="ngModelGroup"> <!-- ngModelGroup Directive -> FormGroup object is created BTS by angular, it is aplied to subgroups. It doesent have ngSubmit output, while ngForm Directive has  -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input 
+          class="form-control" 
+          id="firstName" 
+          type="text" 
+          name="firstName" 
+          ngModel
+          #firstNameTV="ngModel" 
+          (change)="onChange(firstNameTV)" 
+          required
+          minlength="3"
+          maxlength="15"
+          pattern="hashim"> <!-- ngModel Directive -> FormControl object is created BTS by angular  -->
+        <div class="alert alert-danger" *ngIf="firstNameTV.touched && firstNameTV.invalid">
+          <div *ngIf="firstNameTV.errors.required">First Name is requied</div>
+          <div *ngIf="firstNameTV.errors.minlength">Minimum lenght should be {{ firstNameTV.errors.minlength.requiredLength }} characters</div>
+          <div *ngIf="firstNameTV.errors.pattern">First Name dosent match the pattern "{{ firstNameTV.errors.pattern.requiredPattern }}"</div>
+        </div>
+        <label for="lastName">Last Name</label>
+        <input 
+          class="form-control" 
+          id="lastName" 
+          type="text" 
+          name="lastName" 
+          ngModel
+          #lastNameTV="ngModel" 
+          (change)="onChange(lastNameTV)" 
+          required
+          minlength="3"
+          maxlength="15"
+          pattern="khalid">
+          <div class="alert alert-danger" *ngIf="lastNameTV.touched && lastNameTV.invalid">
+              <div *ngIf="lastNameTV.errors.required">Last Name is requied</div>
+              <div *ngIf="lastNameTV.errors.minlength">Minimum lenght should be {{ lastNameTV.errors.minlength.requiredLength }} characters</div>
+              <div *ngIf="lastNameTV.errors.pattern">First Name dosent match the pattern "{{ lastNameTV.errors.pattern.requiredPattern }}"</div>
+          </div>
       </div>
     </div>
     <div class="form-group">
-      <label for="comment">Comment</label>
-      <textarea class="form-control" id="comment" name="" cols="20" rows="5" name="comment" ngModel #commentTV="ngModel" (change)="onChange(commentTV)"></textarea>
+        <label for="comment">Comment</label>
+        <textarea class="form-control" id="comment" name="" cols="20" rows="5" name="comment" ngModel #commentTV="ngModel" (change)="onChange(commentTV)"></textarea>
     </div>
-    <button class="btn btn-primary">Submit</button>
+    <div class="form-group">
+      <label for="contactMethod">Contact Method</label>
+      <select ngModel name="contactMethod">
+        <option *ngFor="let cm of contactMethods" [value]="cm.id"> <!-- use [ngValue]="cm" to display the whole object -->
+          {{ cm.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Relationship Status</label>
+      <div class="radio" *ngFor="let rs of realtionshipStatus">
+        <label>
+          <input ngModel type="radio" name="relationshipStatus" [value]="rs.id">
+          {{ rs.name }}
+        </label>
+      </div>
+    </div>
+    <div class="checkox">
+      <label>
+        <input type="checkbox" ngModel name="rememberMe">
+        Remember Me
+      </label>
+    </div>
+    <p>
+      Debugging: {{ fTV.value | json }}
+    </p>
+    <button class="btn btn-primary" [disabled]="fTV.invalid">Submit</button>
   </form>
 </div>
 <br><br>

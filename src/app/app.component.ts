@@ -37,6 +37,15 @@ export class AppComponent {
         address: null
       }
     };
+  contactMethods = [
+    { id: 1, name: 'Phone'},
+    { id: 2, name: 'Email'},
+  ];
+  realtionshipStatus = [
+    { id:1, name: 'Single'},
+    { id:2, name: 'Married'},
+    { id:3, name: 'Complicated'},
+  ];
 
   constructor(myService: DataService) {
     this.tasks = myService.getTasks();
@@ -93,6 +102,10 @@ export class AppComponent {
 
   onChange(inputTVP) {
     console.log(inputTVP);
+  }
+
+  onFormSubmit(p) {
+    console.log(p.value) // value is JSON representation of from input values
   }
 
 }

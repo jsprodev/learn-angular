@@ -24,3 +24,19 @@ body {
 .mt-1 {
     margin-top: 1rem !important; 
 }
+
+.bg-red {
+    background-color: red !important;
+}
+
+.bg-yellow {
+    background: yellow;
+}
+
+.bg-grey {
+    background: grey;
+}
+
+.form-control.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
