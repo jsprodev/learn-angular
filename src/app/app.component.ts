@@ -42,9 +42,9 @@ export class AppComponent {
     { id: 2, name: 'Email'},
   ];
   realtionshipStatus = [
-    { id:1, name: 'Single'},
-    { id:2, name: 'Married'},
-    { id:3, name: 'Complicated'},
+    { id: 1, name: 'Single'},
+    { id: 2, name: 'Married'},
+    { id: 3, name: 'Complicated'},
   ];
 
   constructor(myService: DataService) {
@@ -105,7 +105,7 @@ export class AppComponent {
   }
 
   onFormSubmit(p) {
-    console.log(p.value) // value is JSON representation of from input values
+    console.log(p.value); // value is JSON representation of from input values
   }
 
 }
