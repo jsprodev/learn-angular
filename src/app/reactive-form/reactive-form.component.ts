@@ -12,8 +12,8 @@ export class ReactiveFormComponent implements OnInit {
   constructor() { }
 
   reactiveForm  = new FormGroup({
-    email : new FormControl('', Validators.required),
-    password : new FormControl('', Validators.required)
+    email : new FormControl('', [Validators.required, Validators.minLength(8), Validators.email]),
+    password : new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
   ngOnInit() {
@@ -21,5 +21,13 @@ export class ReactiveFormComponent implements OnInit {
 
   get email() {
     return this.reactiveForm.get('email');
+  }
+
+  get password() {
+    return this.reactiveForm.get('password');
+  }
+
+  onChange() {
+    console.log(this.email);
   }
 }
