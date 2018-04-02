@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsernameValidators } from './../common/validators/username.validators';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,8 +13,8 @@ export class ReactiveFormComponent implements OnInit {
   constructor() { }
 
   reactiveForm  = new FormGroup({
-    email : new FormControl('', [Validators.required, Validators.minLength(8), Validators.email]),
-    password : new FormControl('', [Validators.required, Validators.minLength(6)])
+    email : new FormControl('', [Validators.required, Validators.minLength(8), UsernameValidators.cannotContainSpace ]),
+    password : new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   ngOnInit() {
