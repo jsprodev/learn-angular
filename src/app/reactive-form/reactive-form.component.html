@@ -2,14 +2,11 @@
 <form [formGroup]="reactiveForm">
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter email address" formControlName="email" #emailTV (change)="onChange()">
+    <input type="email" class="form-control" id="email" placeholder="Enter email address" formControlName="email">
     <div class="alert alert-danger" *ngIf="email.touched && email.invalid"> <!-- *ngIf="reactiveForm.get('email').touched && reactiveForm.get('email').invalid" -->
       <div *ngIf="email.errors.required">
         Email is required
       </div>
-      <!-- <div *ngIf="email.errors.email">
-        Invalid email format
-      </div> -->
       <div *ngIf="email.errors.minlength">
         Minimum Length should be atleast {{ email.errors.minlength.requiredLength }}
       </div>
@@ -21,7 +18,10 @@
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
-    <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+    <div class="alert alert-danger" *ngIf="password.touched && password.invalid"> <!-- *ngIf="reactiveForm.get('password').touched && reactiveForm.get('password').invalid" -->
+      <div *ngIf="password.errors.required">
+          Password is required
+      </div>
       <div *ngIf="password.errors.minlength">
         Minimum Length should be atleast {{ password.errors.minlength.requiredLength }}
       </div>

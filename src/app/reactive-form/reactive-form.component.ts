@@ -13,7 +13,7 @@ export class ReactiveFormComponent implements OnInit {
   constructor() { }
 
   reactiveForm  = new FormGroup({
-    email : new FormControl('', [Validators.required, Validators.minLength(8), UsernameValidators.cannotContainSpace ]),
+    email : new FormControl('', [Validators.required, Validators.minLength(6), UsernameValidators.cannotContainSpace ]),
     password : new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
